@@ -16,7 +16,5 @@ function getComputerChoice(){
         }
     }
 }
-
-
-
-
+// Assign it to a variable
+let computerChoice = getComputerChoice();
