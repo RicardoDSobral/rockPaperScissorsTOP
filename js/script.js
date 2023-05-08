@@ -18,3 +18,18 @@ function getComputerChoice(){
 }
 // Assign it to a variable
 let computerChoice = getComputerChoice();
+
+// Prompt for the player choice
+function getPlayerChoice() {
+    let playerChoice;
+    while (true){
+        playerChoice = prompt("Chose rock, paper o scissor!");
+        let lowerCaseChoice = playerChoice.toLowerCase();
+        if (lowerCaseChoice === "rock" || lowerCaseChoice === "paper" || lowerCaseChoice === "scissor"){
+            return lowerCaseChoice;
+        }
+    }
+}
+
+// Assign the player choice to a variable
+let playerChoice = getPlayerChoice();
