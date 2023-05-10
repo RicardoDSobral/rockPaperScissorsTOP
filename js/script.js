@@ -33,3 +33,24 @@ function getPlayerChoice() {
 
 // Assign the player choice to a variable
 let playerChoice = getPlayerChoice();
+
+// Run a round of the game using both choices as input
+function round(playerChoice, computerChoice) {
+    if (playerChoice === "rock")
+        if(computerChoice === "paper"){
+            return console.log("Computer wins!");
+        }
+
+        else if (computerChoice === "scissor"){
+            return console.log("You win!");
+        }
+
+        else{
+            return console.log("It is a tie!");
+        }
+    else if(playerChoice === "paper"){
+
+    }
+}
+// Return the Result
+// Reset to start another round
