@@ -49,7 +49,26 @@ function round(playerChoice, computerChoice) {
             return console.log("It is a tie!");
         }
     else if(playerChoice === "paper"){
-
+        if (computerChoice === "scissor"){
+            return console.log("Computer wins!");
+        }
+        else if (computerChoice === "rock"){
+            return console.log("You win!");
+        }
+        else{
+            return console.log("It is a tie!");
+        }
+    }
+    else {
+        if(computerChoice === "rock"){
+            return console.log("Computer wins!");
+        }
+        else if(computerChoice === "paper"){
+            return console.log("You win!");
+        }
+        else{
+            return console.log("It is a tie!");
+        }
     }
 }
 // Return the Result
