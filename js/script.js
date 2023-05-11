@@ -1,4 +1,5 @@
-
+let playerScore = 0;
+let computerScore = 0;
 game();
 // Game
     // Get computer choice
@@ -11,13 +12,25 @@ game();
 
 // Get Computer choice by a algorithm thar returns a random number
 function game(){
+    // Function to run the entire game - 5 rounds
+       for (let i = 0; i < 5; i++){
+        console.log("Round " + i.toString() + ":" + round());
+       }
+       // Display the winner
+       console.log("the final score is: Player: " + playerScore.toString() + " Computer: " + computerScore.toString())
+       let winner = playerScore > computerScore? "Player!" : "Computer!";
+       console.log("The winner is: " + winner);
+    }
+
+    function round(){
+        // Runs a single round
         let computerChoice = getComputerChoice();
         let playerChoice = getPlayerChoice();
-        round(playerChoice, computerChoice);
+        return roundResult(playerChoice, computerChoice);
     }
 
 function getComputerChoice(){
-    // Using a 
+    // Using pseudo random numbers
     let randomNumber = Math.floor(Math.random() * 300);
     let computerChoice = randomNumber % 3;
     switch (computerChoice){
@@ -45,41 +58,47 @@ function getPlayerChoice() {
     }
 }
 
-// Run a round of the game using both choices as input
-function round(playerChoice, computerChoice) {
-    console.log(computerChoice)
-    if (playerChoice === "rock")
-    if(computerChoice === "paper"){
-        return console.log("Computer wins!");
-    }
-    
-    else if (computerChoice === "scissor"){
-            return console.log("You win!");
+// Run the results of round of the game using both choices as input
+function roundResult(playerChoice, computerChoice) {
+    if (playerChoice === "rock"){
+        if(computerChoice === "paper"){
+            computerScore++;
+            return "Computer wins!";
         }
         
-        else{
-            return console.log("It is a tie!");
-        }
-        else if(playerChoice === "paper"){
-            if (computerChoice === "scissor"){
-                return console.log("Computer wins!");
+        else if (computerChoice === "scissor"){
+                playerScore++;
+                return "Player wins!";
             }
-            else if (computerChoice === "rock"){
-                return console.log("You win!");
+        
+        else{
+            return "Round is a tie!";
+        }
+    }
+    else if(playerChoice === "paper"){
+        if (computerChoice === "scissor"){
+            computerScore++;
+            return "Computer wins!";
+        }
+        else if (computerChoice === "rock"){
+            playerScore++;
+            return "Player wins!";
         }
         else{
-            return console.log("It is a tie!");
+            return "Round is a tie!";
         }
     }
     else {
         if(computerChoice === "rock"){
-            return console.log("Computer wins!");
+            computerScore++;
+            return "Computer wins!";
         }
         else if(computerChoice === "paper"){
-            return console.log("You win!");
+            playerScore++;
+            return "Player wins!";
         }
         else{
-            return console.log("It is a tie!");
+            return "Round is a tie!";
         }
     }
 }
