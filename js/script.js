@@ -1,5 +1,21 @@
 
+game();
+// Game
+    // Get computer choice
+    // Prompt the user for user choice
+    // Runs a round
+    // Prompt user if wants to go another round
+        // if yes, rerun game
+    // End program
+// Funtion protoypes: 
+
 // Get Computer choice by a algorithm thar returns a random number
+function game(){
+        let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+        round(playerChoice, computerChoice);
+    }
+
 function getComputerChoice(){
     // Using a 
     let randomNumber = Math.floor(Math.random() * 300);
@@ -16,8 +32,6 @@ function getComputerChoice(){
         }
     }
 }
-// Assign it to a variable
-let computerChoice = getComputerChoice();
 
 // Prompt for the player choice
 function getPlayerChoice() {
@@ -31,29 +45,27 @@ function getPlayerChoice() {
     }
 }
 
-// Assign the player choice to a variable
-let playerChoice = getPlayerChoice();
-
 // Run a round of the game using both choices as input
 function round(playerChoice, computerChoice) {
+    console.log(computerChoice)
     if (playerChoice === "rock")
-        if(computerChoice === "paper"){
-            return console.log("Computer wins!");
-        }
-
-        else if (computerChoice === "scissor"){
+    if(computerChoice === "paper"){
+        return console.log("Computer wins!");
+    }
+    
+    else if (computerChoice === "scissor"){
             return console.log("You win!");
         }
-
+        
         else{
             return console.log("It is a tie!");
         }
-    else if(playerChoice === "paper"){
-        if (computerChoice === "scissor"){
-            return console.log("Computer wins!");
-        }
-        else if (computerChoice === "rock"){
-            return console.log("You win!");
+        else if(playerChoice === "paper"){
+            if (computerChoice === "scissor"){
+                return console.log("Computer wins!");
+            }
+            else if (computerChoice === "rock"){
+                return console.log("You win!");
         }
         else{
             return console.log("It is a tie!");
@@ -71,5 +83,3 @@ function round(playerChoice, computerChoice) {
         }
     }
 }
-// Return the Result
-// Reset to start another round
