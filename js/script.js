@@ -1,34 +1,26 @@
 let playerScore = 0;
 let computerScore = 0;
 game();
-// Game
-    // Get computer choice
-    // Prompt the user for user choice
-    // Runs a round
-    // Prompt user if wants to go another round
-        // if yes, rerun game
-    // End program
-// Funtion protoypes: 
 
-// Get Computer choice by a algorithm thar returns a random number
 function game(){
     // Function to run the entire game - 5 rounds
-       for (let i = 0; i < 5; i++){
+    for (let i = 1; i <= 5; i++){
         console.log("Round " + i.toString() + ":" + round());
-       }
-       // Display the winner
-       console.log("the final score is: Player: " + playerScore.toString() + " Computer: " + computerScore.toString())
-       let winner = playerScore > computerScore? "Player!" : "Computer!";
-       console.log("The winner is: " + winner);
     }
+    // Display the winner
+    console.log("the final score is: Player: " + playerScore.toString() + " Computer: " + computerScore.toString())
+    let winner = playerScore > computerScore? "Player!" : "Computer!";
+    console.log("The winner is: " + winner);
+}
 
-    function round(){
-        // Runs a single round
-        let computerChoice = getComputerChoice();
-        let playerChoice = getPlayerChoice();
-        return roundResult(playerChoice, computerChoice);
-    }
+function round(){
+    // Runs a single round
+    let computerChoice = getComputerChoice();
+    let playerChoice = getPlayerChoice();
+    return roundResult(playerChoice, computerChoice);
+}
 
+// Get Computer choice by a algorithm that returns a random number
 function getComputerChoice(){
     // Using pseudo random numbers
     let randomNumber = Math.floor(Math.random() * 300);
