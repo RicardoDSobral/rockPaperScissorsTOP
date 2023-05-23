@@ -1,6 +1,12 @@
 let playerScore = 0;
 let computerScore = 0;
-game();
+
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach((button) => {
+    button.addEventListener('click', round());
+})
+
+/* game();
 
 function game(){
     // Function to run the entire game - 5 rounds
@@ -11,7 +17,15 @@ function game(){
     console.log("the final score is: Player: " + playerScore.toString() + " Computer: " + computerScore.toString())
     let winner = playerScore > computerScore? "Player!" : "Computer!";
     console.log("The winner is: " + winner);
-}
+} */
+
+// Add event listeners to the buttons
+// Atach the round function to the event
+// Show round number
+// Get player choice
+// Get computer choice
+// Run the game for 5 rounds
+// Display winner
 
 function round(){
     // Runs a single round
@@ -38,7 +52,7 @@ function getComputerChoice(){
     }
 }
 
-// Prompt for the player choice
+/* // Prompt for the player choice
 function getPlayerChoice() {
     let playerChoice;
     while (true){
@@ -48,7 +62,7 @@ function getPlayerChoice() {
             return lowerCaseChoice;
         }
     }
-}
+} */
 
 // Run the results of round of the game using both choices as input
 function roundResult(playerChoice, computerChoice) {
