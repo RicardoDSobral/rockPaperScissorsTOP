@@ -1,36 +1,18 @@
 let playerScore = 0;
 let computerScore = 0;
+let roundNumber = 0;
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((button) => {
-    button.addEventListener('click', round());
+    button.addEventListener('click', () => {
+        round(button);
+    });
 })
 
-/* game();
-
-function game(){
-    // Function to run the entire game - 5 rounds
-    for (let i = 1; i <= 5; i++){
-        console.log("Round " + i.toString() + ":" + round());
-    }
-    // Display the winner
-    console.log("the final score is: Player: " + playerScore.toString() + " Computer: " + computerScore.toString())
-    let winner = playerScore > computerScore? "Player!" : "Computer!";
-    console.log("The winner is: " + winner);
-} */
-
-// Add event listeners to the buttons
-// Atach the round function to the event
-// Show round number
-// Get player choice
-// Get computer choice
-// Run the game for 5 rounds
-// Display winner
-
-function round(){
+function round(clickedButton){
     // Runs a single round
     let computerChoice = getComputerChoice();
-    let playerChoice = getPlayerChoice();
+    let playerChoice = clickedButton.id;
     return roundResult(playerChoice, computerChoice);
 }
 
@@ -52,20 +34,11 @@ function getComputerChoice(){
     }
 }
 
-/* // Prompt for the player choice
-function getPlayerChoice() {
-    let playerChoice;
-    while (true){
-        playerChoice = prompt("Chose rock, paper o scissor!");
-        let lowerCaseChoice = playerChoice.toLowerCase();
-        if (lowerCaseChoice === "rock" || lowerCaseChoice === "paper" || lowerCaseChoice === "scissor"){
-            return lowerCaseChoice;
-        }
-    }
-} */
+
 
 // Run the results of round of the game using both choices as input
 function roundResult(playerChoice, computerChoice) {
+    roundNumber++;
     if (playerChoice === "rock"){
         if(computerChoice === "paper"){
             computerScore++;
