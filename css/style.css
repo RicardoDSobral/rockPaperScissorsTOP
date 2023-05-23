@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 600px;
+    gap: 32px;
+    flex: 1;
+}
+
+.btn {
+    flex: 1;
+    height: auto;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 32px;
+}
