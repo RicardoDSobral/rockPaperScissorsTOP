@@ -13,7 +13,9 @@ function round(clickedButton){
     // Runs a single round
     let computerChoice = getComputerChoice();
     let playerChoice = clickedButton.id;
-    return roundResult(playerChoice, computerChoice);
+    let roundWinner = roundResult(playerChoice, computerChoice);
+    scoreContainer.textContent = "Round " + roundNumber;
+    return roundWinner;
 }
 
 // Get Computer choice by a algorithm that returns a random number
@@ -42,42 +44,48 @@ function roundResult(playerChoice, computerChoice) {
     if (playerChoice === "rock"){
         if(computerChoice === "paper"){
             computerScore++;
-            return "Computer wins!";
+            return "Computer";
         }
         
         else if (computerChoice === "scissor"){
                 playerScore++;
-                return "Player wins!";
+                return "Player";
             }
         
         else{
-            return "Round is a tie!";
+            return "Tie";
         }
     }
     else if(playerChoice === "paper"){
         if (computerChoice === "scissor"){
             computerScore++;
-            return "Computer wins!";
+            return "Computer";
         }
         else if (computerChoice === "rock"){
             playerScore++;
-            return "Player wins!";
+            return "Player";
         }
         else{
-            return "Round is a tie!";
+            return "Tie";
         }
     }
     else {
         if(computerChoice === "rock"){
             computerScore++;
-            return "Computer wins!";
+            return "Computer";
         }
         else if(computerChoice === "paper"){
             playerScore++;
-            return "Player wins!";
+            return "Player";
         }
         else{
-            return "Round is a tie!";
+            return "Tie";
         }
     }
 }
+
+const main = document.querySelector('main');
+const scoreContainer = document.createElement('div');
+scoreContainer.setAttribute('id', 'score-container');
+scoreContainer.setAttribute('class','container' );
+main.appendChild(scoreContainer);
