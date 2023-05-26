@@ -51,10 +51,6 @@ buttons.forEach((button) => {
 function round(clickedButton){
     // Runs a single round
     roundNumber++;
-    // Checks if the game has ended
-    if (roundNumber > 5){
-        return checkWinner();
-    }
     let computerChoice = getComputerChoice();
     let playerChoice = clickedButton.id;
     let roundWinner = roundResult(playerChoice, computerChoice);
@@ -62,7 +58,12 @@ function round(clickedButton){
     roundWinnerDisplayer.textContent = roundWinner;
     playerScoreBoard.textContent = "You: " + playerScore;
     computerScoreBoard.textContent = "Computer: " + computerScore;
-
+    
+    // Checks if the game has ended
+    if (playerScore === 5 || computerScore === 5){
+        return checkWinner();
+    }
+    
     // After the first game, should remove style to return this elements only after they are updated to avoid bugs
     roundScoreContainer.removeAttribute('style');
     scoreBoard.removeAttribute('style');
