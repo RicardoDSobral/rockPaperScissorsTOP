@@ -5,24 +5,40 @@ let computerScore = 0;
 let roundNumber = 0;
 
 // DOM Manipulation
-// Creates the Placar-container for the score
-const scoreContainer = document.createElement('div');
-scoreContainer.setAttribute('id', 'score-container');
-scoreContainer.setAttribute('class','container' );
+// Creates the round-score-container
+const roundScoreContainer = document.createElement('div');
+roundScoreContainer.setAttribute('id', 'score-container');
+roundScoreContainer.setAttribute('class','container' );
 
-// Creates individual elements for the score display and round display
+// Creates individual elements for the round winner display and round display
 const roundDisplayer = document.createElement('p');
 roundDisplayer.setAttribute('id', "round-displayer");
 const roundWinnerDisplayer = document.createElement('p');
 roundWinnerDisplayer.setAttribute('id', 'round-winner');
 
 // Appends them to the score container
-scoreContainer.appendChild(roundDisplayer);
-scoreContainer.appendChild(roundWinnerDisplayer);
+roundScoreContainer.appendChild(roundDisplayer);
+roundScoreContainer.appendChild(roundWinnerDisplayer);
+
+// Creates the game scoreboard
+const scoreBoard = document.createElement('div');
+scoreBoard.setAttribute("id", "score-board");
+scoreBoard.setAttribute('class', 'container');
+
+// Creates the player scoreboard and the computer scoreboard
+const playerScoreBoard = document.createElement("p");
+playerScoreBoard.setAttribute('id', "player-scoreboard");
+const computerScoreBoard = document.createElement('p');
+computerScoreBoard.setAttribute('id', 'computer-score');
+
+// Apends to the game scoreboard
+scoreBoard.appendChild(playerScoreBoard);
+scoreBoard.appendChild(computerScoreBoard);
 
 // Appends to main
 const main = document.querySelector('main');
-main.appendChild(scoreContainer);
+main.appendChild(roundScoreContainer);
+main.appendChild(scoreBoard);
 
 // Add the event listeners to the buttons
 const buttons = document.querySelectorAll('.btn');
@@ -39,7 +55,8 @@ function round(clickedButton){
     let roundWinner = roundResult(playerChoice, computerChoice);
     roundDisplayer.textContent = "Round: " + roundNumber;
     roundWinnerDisplayer.textContent = roundWinner;
-/*     scoreContainer.textContent = "Round " + roundNumber + "\n" + "Round winner is: " + roundWinner; */
+    playerScoreBoard.textContent = "You: " + playerScore;
+    computerScoreBoard.textContent = "Computer: " + computerScore;
     return roundWinner;
 }
 
