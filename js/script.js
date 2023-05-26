@@ -51,8 +51,9 @@ buttons.forEach((button) => {
 function round(clickedButton){
     // Runs a single round
     roundNumber++;
+    // Checks if the game has ended
     if (roundNumber > 5){
-        return checkWinner(playerScore, computerScore);
+        return checkWinner();
     }
     let computerChoice = getComputerChoice();
     let playerChoice = clickedButton.id;
@@ -61,7 +62,11 @@ function round(clickedButton){
     roundWinnerDisplayer.textContent = roundWinner;
     playerScoreBoard.textContent = "You: " + playerScore;
     computerScoreBoard.textContent = "Computer: " + computerScore;
-    return roundWinner;
+
+    // After the first game, should remove style to return this elements only after they are updated to avoid bugs
+    roundScoreContainer.removeAttribute('style');
+    scoreBoard.removeAttribute('style');
+    return;
 }
 
 // Get Computer choice by a algorithm that returns a random number
@@ -129,15 +134,16 @@ function roundResult(playerChoice, computerChoice) {
     }
 }
 
-function checkWinner(playerScore, computerScore){
+function checkWinner(){
     // Removes the scoreboards
-    roundScoreContainer.remove();
-    scoreBoard.remove();
+    roundScoreContainer.setAttribute('style', 'display: none');
+    scoreBoard.setAttribute('style', 'display: none');
 
     // Create the element to display the result
     const result = document.createElement('h2');
     result.setAttribute('id', "result");
     main.appendChild(result);
+    resetTheGame();
 
     // Calculates the result
     if (playerScore > computerScore){
@@ -148,4 +154,28 @@ function checkWinner(playerScore, computerScore){
         result.textContent = "You lose!";
         return;
     }
+}
+
+function resetTheGame(){
+
+    // Hides the original buttons
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {button.setAttribute('style', 'display: none')});
+
+    // Creates the reset button
+    const buttonsContainer = document.querySelector('#button-container');
+    const resetButton = document.createElement('button');
+    resetButton.setAttribute('class', 'btn');
+    resetButton.textContent = "Play again";
+    buttonsContainer.appendChild(resetButton);
+
+    // Reset the game parameters on click
+    resetButton.addEventListener('click', () => {
+        playerScore = 0;
+        computerScore = 0;
+        roundNumber = 0;
+        resetButton.remove();
+        buttons.forEach((button) => {button.removeAttribute('style')});
+        result.remove();
+    })
 }
