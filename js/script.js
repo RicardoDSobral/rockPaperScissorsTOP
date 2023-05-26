@@ -50,6 +50,10 @@ buttons.forEach((button) => {
 
 function round(clickedButton){
     // Runs a single round
+    roundNumber++;
+    if (roundNumber > 5){
+        return checkWinner(playerScore, computerScore);
+    }
     let computerChoice = getComputerChoice();
     let playerChoice = clickedButton.id;
     let roundWinner = roundResult(playerChoice, computerChoice);
@@ -82,7 +86,6 @@ function getComputerChoice(){
 
 // Run the results of round of the game using both choices as input
 function roundResult(playerChoice, computerChoice) {
-    roundNumber++;
     if (playerChoice === "rock"){
         if(computerChoice === "paper"){
             computerScore++;
@@ -126,4 +129,23 @@ function roundResult(playerChoice, computerChoice) {
     }
 }
 
+function checkWinner(playerScore, computerScore){
+    // Removes the scoreboards
+    roundScoreContainer.remove();
+    scoreBoard.remove();
 
+    // Create the element to display the result
+    const result = document.createElement('h2');
+    result.setAttribute('id', "result");
+    main.appendChild(result);
+
+    // Calculates the result
+    if (playerScore > computerScore){
+       result.textContent = "You Win!";
+       return;
+    }
+    else{
+        result.textContent = "You lose!";
+        return;
+    }
+}
